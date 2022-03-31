@@ -1,0 +1,109 @@
+{% extends 'employer_navigation.html' %}
+
+{% block title %}Job Profile{%endblock title%}
+
+{% block head %}
+
+<link href="/static/css/job_profile_employer.css" rel="stylesheet">
+
+{% endblock head %}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+    Job Profile
+</marquee>
+
+<div class="container emp-profile">
+    <form method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4">
+                
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <p>Posted On:    {{job.post_date}}</p>
+                    <h5>
+                        {{job.title}}, {{job.employer.company}}
+                    </h5>
+                    <h6>
+                        Application Deadline:    {{job.deadline}}
+                    </h6>
+                    <ul class="nav nav-tabs about" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active disabled" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">About Job</button>
+                        </li>
+                    </ul>              
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a style="margin-bottom: 10px; width: 150px; padding: 5px;" href="{% url 'job_applicants' job.id %}" class="btn btn-success btn-sm">APPLICANTS LIST</a>
+                <a style="margin-bottom: 10px; width: 150px; padding: 5px;" href="{% url 'edit_job' job.id %}" class="btn btn-secondary btn-sm">EDIT THIS JOB</a>
+                <a style="width: 150px; padding: 5px;" href="{% url 'delete_job' job.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are You Sure?')">DELETE THIS JOB</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <div>
+                        <label for="">Job Description</label>
+                        <p>{{job.description}}</p>
+                    </div>
+                    <div>
+                        <label for="">Required Skills</label>
+                        <p>{{job.skill}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Vacancy</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{job.vacancy}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Educational Requirements</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{job.education}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Required Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{job.experience}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Salary</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{job.salary}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Job Location</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{job.location}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>           
+</div>
+
+{% endblock body %}

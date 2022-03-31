@@ -1,0 +1,79 @@
+{% extends 'employer_navigation.html' %}
+
+{% block title %}Add Job | Employer Home{%endblock title%}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+  ADD JOB
+</marquee>
+<div class="container" style="width:45%">
+    <form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="title">Job Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter Job Title" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Job Description</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Enter Job Description" required>
+    </div>
+
+    <div class="form-group">
+        <label for="education">Educational Requirements</label>
+        <input type="text" class="form-control" id="education" name="education" placeholder="Enter Educational Requirements" required>
+    </div>
+
+    <div class="d-flex flex-wrap">
+    <div class="form-group" style="width: 48%;">
+        <label for="vacancy">Vacancy</label>
+        <input type="text" class="form-control" id="vacancy" name="vacancy" placeholder="Enter Vacancy Number" required>
+    </div>
+    <div class="form-group ms-4" style="width: 48%;">
+        <label for="deadline">Application Deadline</label>
+        <input type="date" class="form-control" id="deadline" name="deadline" placeholder="" required>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label for="experience">Experience</label>
+        <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter Experience" required>
+    </div>
+
+    <div class="form-group">
+        <label for="skill">Required Skills</label>
+        <input type="text" class="form-control" id="skill" name="skill" placeholder="Enter Required Skills" required>
+    </div>
+
+    <div class="d-flex flex-wrap" style="margin-bottom: 5px;">
+    <div class="form-group" style="width: 48%;">
+        <label for="salary">Salary</label>
+        <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter Salary Range" required>
+    </div>
+    <div class="form-group ms-4" style="width: 48%;">
+        <label for="location ">Job Location</label>
+        <input type="text" class="form-control" id="location" name="location" placeholder="Enter Job Location" required>
+    </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm mx-auto d-block">POST</button>
+    </form>
+
+    {% ifequal error "no" %}
+    <script>
+        alert("Job Posted Successfully");
+        window.location.replace("job_list");
+    </script>
+    {% endifequal %}
+
+    {% ifequal error "yes" %}
+    <script>
+        alert("Job Posting Failed");
+        window.location.replace("add_job");
+    </script>
+    {% endifequal %}
+    
+</div>
+{% endblock body %}

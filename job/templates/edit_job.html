@@ -1,0 +1,78 @@
+{% extends 'employer_navigation.html' %}
+
+{% block title %}Edit Job | Employer Home{%endblock title%}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+  EDIT JOB
+</marquee>
+<div class="container" style="width:45%">
+    <form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="title">Job Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{job.title}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Job Description</label>
+        <input type="text" class="form-control" id="description" name="description" value="{{job.description}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="education">Educational Requirements</label>
+        <input type="text" class="form-control" id="education" name="education" value="{{job.education}}" required>
+    </div>
+
+    <div class="d-flex flex-wrap">
+    <div class="form-group" style="width: 48%;">
+        <label for="vacancy">Vacancy Number</label>
+        <input type="text" class="form-control" id="vacancy" name="vacancy" value="{{job.vacancy}}" required>
+    </div>
+    <div class="form-group ms-4" style="width: 48%;">
+        <label for="deadline">Application Deadline</label> [{{job.deadline}}]
+        <input type="date" class="form-control" id="deadline" name="deadline">
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label for="experience">Experience</label>
+        <input type="text" class="form-control" id="experience" name="experience" value="{{job.experience}}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="skill">Required Skills</label>
+        <input type="text" class="form-control" id="skill" name="skill" value="{{job.skill}}" required>
+    </div>
+
+    <div class="d-flex flex-wrap" style="margin-bottom: 5px;">
+    <div class="form-group" style="width: 48%;">
+        <label for="salary">Salary</label>
+        <input type="text" class="form-control" id="salary" name="salary" value="{{job.salary}}" required>
+    </div>
+    <div class="form-group ms-4" style="width: 48%;">
+        <label for="location ">Job Location</label>
+        <input type="text" class="form-control" id="location" name="location" value="{{job.location}}" required>
+    </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm mx-auto d-block">SAVE CHANGES</button>
+    </form>
+
+    {% ifequal error "no" %}
+    <script>
+        window.location.replace("{% url 'job_profile_employer' job.id %}");
+    </script>
+    {% endifequal %}
+
+    {% ifequal error "yes" %}
+    <script>
+        alert("Job Editing Failed");
+        window.location.href("{% url 'edit_job' job.id %}");
+    </script>
+    {% endifequal %}
+    
+</div>
+{% endblock body %}

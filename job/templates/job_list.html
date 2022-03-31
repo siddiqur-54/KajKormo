@@ -1,0 +1,40 @@
+{% extends 'employer_navigation.html' %}
+
+{% block title %}Job List | Employer Home{%endblock title%}
+{% block head %}
+<link href="/static/css/table.css" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+  POSTED JOBS
+</marquee>
+<div class="container">
+<table class=" my-4 table table-hover table-bordered styled-table" id="example">
+    <caption>List Of My Posted Jobs</caption>
+    <thead>
+        <tr>
+            <th>Serial No.</th>
+            <th>Job Title</th>
+            <th>Post Date</th>
+            <th>Application Deadline</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in job %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.post_date}}</td>
+            <td>{{i.deadline}}</td>
+            <td><a href="{% url 'job_profile_employer' i.id %}" class="btn btn-success btn-sm">VIEW DETAILS</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock body %}

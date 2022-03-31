@@ -1,0 +1,54 @@
+{% extends 'user_navigation.html' %}
+
+{% block title %}Applied Jobs | User Home{%endblock title%}
+{% block head %}
+<link href="/static/css/table.css" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+  APPLIED JOBS
+</marquee>
+<div class="container">
+<table class=" my-4 table table-hover table-striped table-bordered styled-table" id="example">
+    <caption>List Of My Applied Jobs</caption>
+    <thead>
+        <tr>
+            <th>Serial No.</th>
+            <th>Job Title</th>
+            <th>Job Description</th>
+            <th>Educational Requirements</th>
+            <th>Post Date</th>
+            <th>Apllication Deadline</th>
+            <th>Salary Range</th>
+            <th>Vacancy Number</th>
+            <th>Experience</th>
+            <th>Skills</th>
+            <th>Job Location</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in job %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.title}}</td>
+            <td>{{i.description}}</td>
+            <td>{{i.education}}</td>
+            <td>{{i.post_date}}</td>
+            <td>{{i.deadline}}</td>
+            <td>{{i.salary}}</td>
+            <td>{{i.vacancy}}</td>
+            <td>{{i.experience}}</td>
+            <td>{{i.skill}}</td>
+            <td>{{i.location}}</td>
+            <td><a href="{% url 'job_profile_user_applied' i.id %}" class="btn btn-success btn-sm">VIEW DETAILS</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock body %}

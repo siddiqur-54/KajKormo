@@ -1,0 +1,52 @@
+{% extends 'admin_navigation.html' %}
+
+{% block title %}View Users | Admin Home{%endblock title%}
+{% block head %}
+<link href="/static/css/table.css" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+  VIEW USERS
+</marquee>
+<div class="container">
+<table class=" my-4 table table-hover table-bordered styled-table" id="example">
+    <caption>List Of Users</caption>
+    <thead>
+        <tr>
+            <th>Serial No.</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Email ID</th>
+            <th>Contact</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
+            <th>Educational Qualifications</th>
+            <th>Experiences</th>
+            <th>Skills</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in data %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+            <td><img src="{{i.image.url}}" style="width: 100px; height: 100px; border-radius: 50%;" alt=""></td>
+            <td>{{i.user.username}}</td>
+            <td>{{i.contact}}</td>
+            <td>{{i.birth_date}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.education}}</td>
+            <td>{{i.experience}}</td>
+            <td>{{i.skill}}</td>
+            <td><a href="{% url 'view_profile_user' i.id %}" class="btn btn-success btn-sm">VIEW PROFILE</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock body %}
