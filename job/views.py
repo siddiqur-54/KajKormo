@@ -304,7 +304,7 @@ def delete_user(request,pid):
     return redirect('view_users')
 
 
-def delete_user_own(request,pid):
+def delete_user_own(request):
     if not request.user.is_authenticated:
         return redirect('user_login')
     student = request.user
