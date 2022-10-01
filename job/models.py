@@ -16,7 +16,7 @@ class Candidate(models.Model):
     type = models.CharField(max_length=15,null=True)
     user = OneToOneField(User, on_delete=CASCADE,null=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.user.username
 
 
@@ -31,7 +31,7 @@ class Employer(models.Model):
 
     user= models.OneToOneField(User, on_delete=CASCADE,null=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.user.username
 
 
@@ -50,5 +50,5 @@ class Job(models.Model):
     employer= models.ForeignKey(Employer, on_delete=CASCADE,null=True)
     student= models.ManyToManyField(Candidate)
 
-    def _str_(self):
+    def __str__(self):
         return self.title
