@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Secret key
+*.secret_key
+
+# Database
+db.sqlite3
+
+dumpdata/
+
+# Static files
+staticfiles/
+
+staticfiles-cdn/
+
+# Media files
+media/
+
+# Compiled Python files
+*.pyc
+
+# Django development server pid file
+*.pid
+
+# Ignore coverage reports
+htmlcov/
+
+# Ignore the secret key environment variable
+.env
+
+# Ignore local development settings
+local_settings.py
+
+# Ignore log files
+*.log

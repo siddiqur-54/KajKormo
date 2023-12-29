@@ -1,0 +1,42 @@
+{% extends 'admin_navigation.html' %}
+
+{% block title %}Admin Home{%endblock title%}
+
+{% block body %}
+
+<marquee class="bg-secondary text-light" width="100%" direction="right" height="25px">
+  ADMIN HOME
+</marquee>
+<div class="container" style="width:45%">
+    <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" name="fname" value="{{user.first_name}}" required>
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" name="lname" value="{{user.last_name}}" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control mb-2" id="email" name="email" value="{{user.email}}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-sm mx-auto d-block">SAVE CHANGES</button>
+    </form>
+
+    {% ifequal error "no" %}
+    <script>
+        window.location.replace("/admins/admin_home");
+    </script>
+    {% endifequal %}
+
+    {% ifequal error "yes" %}
+    <script>
+        alert("Profile Editing Failed");
+        window.location.replace("/admins/admin_home");
+    </script>
+    {% endifequal %}
+</div>
+{% endblock body %}
