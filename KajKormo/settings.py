@@ -31,13 +31,6 @@ ALLOWED_HOSTS = []
 if not DEBUG:
     ALLOWED_HOSTS+=[os.environ.get('DJANGO_ALLOWED_HOST')]
 
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
