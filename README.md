@@ -10,7 +10,7 @@ The website has three types of users
 - Can view all the employers and the applicants
 - Can search by any keyword
 - Can enable or disable the login access of the employers
-- Can delete any account of the employer and the applicants
+- Can delete any account of the employers and the applicants
 #### Employers' Features
 - Can sign up, sign in, sign out, change password, delete account
 - Can only sign in, if the admin give the access
