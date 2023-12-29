@@ -22,3 +22,6 @@ The website has three types of users
 - Can apply or undo the apply for the the job
 - Can search by any keyword
 - Can see the previous applied jobs
+
+#### Technology Used for the Project
+- Python, Django, HTML, CSS, Bootstrap, Javascript
